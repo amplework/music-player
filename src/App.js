@@ -96,31 +96,31 @@ const App = () => {
         volume={0.5}
         src={"https://content.blubrry.com/takeituneasy/lex_ai_balaji_srinivasan.mp3"}
       />
-      <div className='bg-white/[.12] w-[95%] lg:w-[80%] h-[15%] rounded-xl flex items-center'>
-        <div className='w-[30%] md:w-[20%] lg:w-[10%] h-[100%] flex justify-center items-center'>
+      <div className='bg-white/[.12] w-[95%] lg:w-[80%] h-[15%] rounded-xl flex justify-center items-center'>
+        <div className='w-[10%] lg:w-[10%] h-[100%] flex justify-center items-center'>
           {state.isPlay
-            ? <PlayCircle style={{ width: 'auto', height: '80%', color: 'white', cursor: 'pointer' }} onClick={() => togglePlay(false)} />
-            : <PauseCircle style={{ width: 'auto', height: '80%', color: 'white', cursor: 'pointer' }} onClick={() => togglePlay(true)} />}
+            ? <PlayCircle className='scale-[2] md:scale-[2.5] lg:scale-[3] text-white/[0.7] cursor-pointer' onClick={() => togglePlay(false)} />
+            : <PauseCircle className='scale-[2] md:scale-[2.5] lg:scale-[3] text-white/[0.7] cursor-pointer' onClick={() => togglePlay(true)} />}
         </div>
-        <div className='w-[90%] h-[100%] p-5'>
-          <div className='w-[100%] h-[50%]'>
-            <Slider onChangeCommitted={onSlideRelease} value={state.slide} onChange={onChangeSlide} size='medium' style={{ width: '99%', marginLeft: '10px', color: 'rgba(255, 255, 255, 1)', height: '40%' }} />
+        <div className='w-[80%] md:w-[90%] h-[100%] p-2'>
+          <div className='w-[100%] h-[50%] py-[10px] md:p-0 justify-end items-center flex'>
+            <Slider onChangeCommitted={onSlideRelease} value={state.slide} onChange={onChangeSlide} size='medium' style={{ width: '100%', marginLeft: '10px', color: 'rgba(255, 255, 255, 1)', height: '40%' }} />
           </div>
           <div className='w-[100%] h-[50%] flex justify-between'>
             <div className='flex items-center w-[50%]'>
               <div className='w-[25px] h-[25px] flex justify-center items-center rounded-[5px] ml-[10px]'>
-                <p ref={volumeValueRef} style={{ color: 'white' }}>1x</p>
+                <p className='text-white/[0.7] text-[10px] md:text-[12px] lg:text-[15px]' ref={volumeValueRef}>1x</p>
               </div>
-              <div style={{border: '1.8px solid white'}} className='w-[25px] h-[25px] flex justify-center items-center rounded-[5px] ml-[20px] cursor-pointer' onClick={increasePlaybackSpeed}>
-                <Add style={{ color: 'white', fontWeight: '100', fontSize: 20 }} />
+              <div style={{border: '1.8px solid rgba(255, 255, 255, 0.7)'}} className='w-[20px] md:w-[20px] lg:w-[25px] h-[20px] md:h-[20px] lg:h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] md:ml-[15px] lg:ml-[20px] cursor-pointer' onClick={increasePlaybackSpeed}>
+                <Add style={{fontSize: '15px'}} className=' text-white/[0.7] font-light'  />
               </div>
-              <div style={{border: '1.8px solid white'}} className='w-[25px] h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] cursor-pointer' onClick={decreasePlaybackSpeed}>
-                <Remove style={{ color: 'white', fontWeight: '100', fontSize: 20 }} />
+              <div style={{border: '1.8px solid rgba(255, 255, 255, 0.7)'}} className='w-[20px] md:w-[20px] lg:w-[25px] h-[20px] md:h-[20px] lg:h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] md:ml-[15px] lg:ml-[10px] cursor-pointer' onClick={decreasePlaybackSpeed}>
+                <Remove style={{fontSize: '15px'}} className=' text-white/[0.7] font-light'  />
               </div>
-              <div className='flex ml-[20px] group justify-center items-center'>
+              <div className='flex ml-[10px] md:ml-[15px] lg:ml-[20px] group justify-center items-center'>
                 {state.mute
-                  ? <VolumeOff style={{ color: 'white' }} />
-                  : <VolumeUp style={{ color: 'white' }} />
+                  ? <VolumeOff style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '20px' }} />
+                  : <VolumeUp style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '20px' }} />
                 }
                 <div className='flex opacity-0 justify-center items-center group-hover:opacity-100 transition-all'>
                   <Slider value={state.volume} onChange={onVolumeChange} size='small' style={{ width: '8vw', marginLeft: '10%', color: 'rgba(255, 255, 255, 1)', height: '15%' }} />
@@ -128,7 +128,7 @@ const App = () => {
               </div>
             </div>
             <div className='flex justify-center items-center'>
-              <p style={{ color: 'rgba(255, 255, 255, 0.7)' }} ref={durationRef}>{'00:00:00'} / {'00:00:00'}</p>
+              <p className='text-white/[0.7] text-[10px] md:text-[12px] lg:text-[15px]' ref={durationRef}>{'00:00:00'} / {'00:00:00'}</p>
             </div>
           </div>
         </div>
