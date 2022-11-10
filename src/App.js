@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { Add, PauseCircle, PlayCircle, Remove, VolumeOff, VolumeUp } from '@mui/icons-material';
+import { Add, PauseCircle, PlayCircle, Remove, VolumeOff, VolumeUp, Replay10, Forward30 } from '@mui/icons-material';
 import { Slider } from '@mui/material';
 
 const App = () => {
@@ -88,6 +88,24 @@ const App = () => {
     }
   }
 
+  const skipBack = () => {
+    let tenSec = 10
+    if(audioRef.current.audio.current){
+      if(audioRef.current.audio.current.currentTime > tenSec){
+        audioRef.current.audio.current.currentTime = (audioRef.current.audio.current.currentTime - tenSec)
+      }
+    }
+  }
+
+  const skipForward = () => {
+    let thirtySec = 30
+    if(audioRef.current.audio.current){
+      if((audioRef.current.audio.current.duration - audioRef.current.audio.current.currentTime) > thirtySec){
+        audioRef.current.audio.current.currentTime = (audioRef.current.audio.current.currentTime + thirtySec)
+      }
+    }
+  }
+
   return (
     <div className='h-screen w-screen flex flex-col justify-center items-center bg-[#121212]'>
       <AudioPlayer
@@ -116,6 +134,12 @@ const App = () => {
               </div>
               <div style={{border: '1.8px solid rgba(255, 255, 255, 0.7)'}} className='w-[20px] md:w-[20px] lg:w-[25px] h-[20px] md:h-[20px] lg:h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] md:ml-[15px] lg:ml-[10px] cursor-pointer' onClick={decreasePlaybackSpeed}>
                 <Remove style={{fontSize: '15px'}} className=' text-white/[0.7] font-light'  />
+              </div>
+              <div className='w-[20px] md:w-[20px] lg:w-[25px] h-[20px] md:h-[20px] lg:h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] md:ml-[15px] lg:ml-[10px] cursor-pointer' onClick={skipBack}>
+                <Replay10 style={{fontSize: '180%'}} className=' text-white/[0.7] font-light'  />
+              </div>
+              <div className='w-[20px] md:w-[20px] lg:w-[25px] h-[20px] md:h-[20px] lg:h-[25px] flex justify-center items-center rounded-[5px] ml-[10px] md:ml-[15px] lg:ml-[10px] cursor-pointer' onClick={skipForward}>
+                <Forward30 style={{fontSize: '180%'}} className=' text-white/[0.7] font-light'  />
               </div>
               <div className='flex ml-[10px] md:ml-[15px] lg:ml-[20px] group justify-center items-center'>
                 {state.mute
